@@ -1,0 +1,8 @@
+# 3 Snapshots 3 Communities
+Snapshot 1, 2 Communities
+0 2 3
+1 2
+
+
+# Snapshot 3, 1 Communities
+0 1 2 3

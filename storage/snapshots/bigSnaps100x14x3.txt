@@ -1,0 +1,250 @@
+n_oS 103
+n 64
+
+number of snapshots: 103
+number of communities: 
+snap 1: 1, snap 2: 0, snap 3: 0, snap 4: 0, snap 5: 0, snap 6: 0, snap 7: 0, snap 8: 0, snap 9: 0, snap 10: 0, snap 11: 0, snap 12: 0, snap 13: 0, snap 14: 0, snap 15: 0, snap 16: 0, snap 17: 0, snap 18: 0, snap 19: 0, snap 20: 0, snap 21: 0, snap 22: 0, snap 23: 0, snap 24: 0, snap 25: 0, snap 26: 0, snap 27: 0, snap 28: 0, snap 29: 0, snap 30: 0, snap 31: 0, snap 32: 0, snap 33: 0, snap 34: 0, snap 35: 0, snap 36: 0, snap 37: 0, snap 38: 0, snap 39: 0, snap 40: 0, snap 41: 0, snap 42: 0, snap 43: 0, snap 44: 0, snap 45: 0, snap 46: 0, snap 47: 0, snap 48: 0, snap 49: 0
+snap 50: 0, snap 51: 0, snap 52: 0, snap 53: 0, snap 54: 0, snap 55: 0, snap 56: 0, snap 57: 0, snap 58: 0, snap 59: 0, snap 60: 0, snap 61: 0, snap 62: 0, snap 63: 0, snap 64: 0, snap 65: 0, snap 66: 0, snap 67: 0, snap 68: 0, snap 69: 0, snap 70: 0, snap 71: 0, snap 72: 0, snap 73: 0, snap 74: 0, snap 75: 0, snap 76: 0, snap 77: 0, snap 78: 0, snap 79: 1, snap 80: 1, snap 81: 1, snap 82: 0, snap 83: 0, snap 84: 1, snap 85: 0, snap 86: 0, snap 87: 0, snap 88: 0, snap 89: 0, snap 90: 0, snap 91: 0, snap 92: 0, snap 93: 0, snap 94: 0, snap 95: 2, snap 96: 0, snap 97: 0, snap 98: 0, snap 99: 0
+snap 100: 1, snap 101: 1, snap 102: 1, snap 103: 2
+
+sizes of communities of each snapshot: 
+snap 1: 1
+com 1: 4
+snap 79: 1
+com 1: 6
+snap 80: 1
+com 1: 3
+snap 81: 1
+com 1: 6
+snap 84: 1
+com 1: 6
+snap 95: 2
+com 1: 4, com 2: 6
+snap 100: 1
+com 1: 3
+snap 101: 1
+com 1: 3
+snap 102: 1
+com 1: 3
+snap 103: 2
+com 1: 4, com 2: 12
+
+snapshot 1
+1 # 2 # 3 # 4 # 
+
+snapshot 2
+
+snapshot 3
+
+snapshot 4
+
+snapshot 5
+
+snapshot 6
+
+snapshot 7
+
+snapshot 8
+
+snapshot 9
+
+snapshot 10
+
+snapshot 11
+
+snapshot 12
+
+snapshot 13
+
+snapshot 14
+
+snapshot 15
+
+snapshot 16
+
+snapshot 17
+
+snapshot 18
+
+snapshot 19
+
+snapshot 20
+
+snapshot 21
+
+snapshot 22
+
+snapshot 23
+
+snapshot 24
+
+snapshot 25
+
+snapshot 26
+
+snapshot 27
+
+snapshot 28
+
+snapshot 29
+
+snapshot 30
+
+snapshot 31
+
+snapshot 32
+
+snapshot 33
+
+snapshot 34
+
+snapshot 35
+
+snapshot 36
+
+snapshot 37
+
+snapshot 38
+
+snapshot 39
+
+snapshot 40
+
+snapshot 41
+
+snapshot 42
+
+snapshot 43
+
+snapshot 44
+
+snapshot 45
+
+snapshot 46
+
+snapshot 47
+
+snapshot 48
+
+snapshot 49
+
+snapshot 50
+
+snapshot 51
+
+snapshot 52
+
+snapshot 53
+
+snapshot 54
+
+snapshot 55
+
+snapshot 56
+
+snapshot 57
+
+snapshot 58
+
+snapshot 59
+
+snapshot 60
+
+snapshot 61
+
+snapshot 62
+
+snapshot 63
+
+snapshot 64
+
+snapshot 65
+
+snapshot 66
+
+snapshot 67
+
+snapshot 68
+
+snapshot 69
+
+snapshot 70
+
+snapshot 71
+
+snapshot 72
+
+snapshot 73
+
+snapshot 74
+
+snapshot 75
+
+snapshot 76
+
+snapshot 77
+
+snapshot 78
+
+snapshot 79
+11 # 12 # 13 # 14 # 15 # 16 # 
+
+snapshot 80
+17 # 18 # 19 # 
+
+snapshot 81
+17 # 20 # 21 # 22 # 23 # 24 # 
+
+snapshot 82
+
+snapshot 83
+
+snapshot 84
+17 # 23 # 25 # 26 # 27 # 28 # 
+
+snapshot 85
+
+snapshot 86
+
+snapshot 87
+
+snapshot 88
+
+snapshot 89
+
+snapshot 90
+
+snapshot 91
+
+snapshot 92
+
+snapshot 93
+
+snapshot 94
+
+snapshot 95
+33 # 34 # 35 # 41 # 
+36 # 37 # 38 # 39 # 40 # 42 # 
+
+snapshot 96
+
+snapshot 97
+
+snapshot 98
+
+snapshot 99
+
+snapshot 100
+46 # 47 # 48 # 
+
+snapshot 101
+35 # 49 # 50 # 
+
+snapshot 102
+49 # 53 # 54 # 
+
+snapshot 103
+55 # 59 # 61 # 63 # 
+32 # 35 # 41 # 49 # 53 # 54 # 56 # 57 # 58 # 60 # 62 # 64 # 
+
+
