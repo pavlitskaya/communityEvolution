@@ -1,0 +1,20 @@
+#pragma once
+
+#include <cuda.h>
+#include <cuda_runtime.h>
+#include <cuda_runtime_api.h>
+#include <thrust\device_vector.h>
+#include <thrust\host_vector.h>
+#include <thrust\partition.h>
+#include <thrust\unique.h>
+#include <thrust\iterator\constant_iterator.h>
+#include <thrust\iterator\counting_iterator.h>
+#include <thrust\iterator\zip_iterator.h>
+#include <thrust\for_each.h>
+#include <thrust\copy.h>
+#include <thrust\sort.h>
+#include <thrust\binary_search.h>
+#include <thrust\set_operations.h>
+#include <thrust\sequence.h>
+#include <thrust\merge.h>
+#include <thrust\execution_policy.h>

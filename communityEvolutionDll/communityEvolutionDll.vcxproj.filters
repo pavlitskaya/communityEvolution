@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="General Files">
+      <UniqueIdentifier>{3ae3fbe6-d5e2-4012-be05-d8bccd505c04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General Files\Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="General Files\Test Files">
+      <UniqueIdentifier>{5c631fee-0ca9-425e-9753-352dbc00b16d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General Files\Main Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="General Files\Misc Files">
+      <UniqueIdentifier>{2f265db2-3339-4e75-b64c-2943e36c9b85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General Files\General Files">
+      <UniqueIdentifier>{4d04b495-e5c5-417b-b292-c53af86083a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General Files\Device Files">
+      <UniqueIdentifier>{a00ea525-5186-4aef-bdf4-2907f9475b36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General Files\Host Files">
+      <UniqueIdentifier>{a843ab0d-83ca-46fd-961f-b1e8f4d275e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General Files\Structs">
+      <UniqueIdentifier>{ba0e0448-68cc-4d62-93a7-827ad837bedc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General Files\Algorithm Files">
+      <UniqueIdentifier>{830caf6e-cc73-4ace-863c-92ded934e2d5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>General Files\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>General Files\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\general_defines.h">
+      <Filter>General Files\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\check_settings.h">
+      <Filter>General Files\Test Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\timing.h">
+      <Filter>General Files\Misc Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\general_comparsion_structs.h">
+      <Filter>General Files\Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="include\general_arithmetic_structs.h">
+      <Filter>General Files\Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="include\device_analytic_structs.h">
+      <Filter>General Files\Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="include\device_pair_structs.h">
+      <Filter>General Files\Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="include\general_pair_structs.h">
+      <Filter>General Files\Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="include\general_structs.h">
+      <Filter>General Files\Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="include\data_info.h">
+      <Filter>General Files\Misc Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\data_source.h">
+      <Filter>General Files\Main Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\local_host_headers.h">
+      <Filter>General Files\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\device_pair.h">
+      <Filter>General Files\Device Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\host_storage_serilization.h">
+      <Filter>General Files\Host Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\display_elements.h">
+      <Filter>General Files\Misc Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\general_pair.h">
+      <Filter>General Files\General Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\host_storage_human.h">
+      <Filter>General Files\Host Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\device_pair_construct.h">
+      <Filter>General Files\Device Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\host_pair_construct.h">
+      <Filter>General Files\Host Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\device_analytic.h">
+      <Filter>General Files\Device Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\host_analytic.h">
+      <Filter>General Files\Host Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\general_search.h">
+      <Filter>General Files\General Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\device_help.h">
+      <Filter>General Files\Device Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\device_convert.h">
+      <Filter>General Files\Device Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\host_convert.h">
+      <Filter>General Files\Host Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\host_pair.h">
+      <Filter>General Files\Host Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\device_storage_serilization.h">
+      <Filter>General Files\Device Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\algorithm_clique.h">
+      <Filter>General Files\Algorithm Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\algorithm_event_extraction.h">
+      <Filter>General Files\Algorithm Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\algorithm_propinquity.h">
+      <Filter>General Files\Algorithm Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\host_algorithm_clique.h">
+      <Filter>General Files\Algorithm Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\host_algorithm_propinquity.h">
+      <Filter>General Files\Algorithm Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\device_headers.h">
+      <Filter>General Files\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\host_headers.h">
+      <Filter>General Files\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\host_algorithm_event_extraction.h">
+      <Filter>General Files\Algorithm Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\display_elements_test.h">
+      <Filter>General Files\Misc Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>General Files\Main Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>General Files\Main Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\data_source.cpp">
+      <Filter>General Files\Main Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\host_storage_serilization.cpp">
+      <Filter>General Files\Host Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\general_pair.cpp">
+      <Filter>General Files\General Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\host_storage_human.cpp">
+      <Filter>General Files\Host Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="source\check_settings.cu">
+      <Filter>General Files\Test Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="source\timing.cu">
+      <Filter>General Files\Misc Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="source\data_info.cu">
+      <Filter>General Files\Misc Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="source\device_pair.cu">
+      <Filter>General Files\Device Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="source\display_elements.cu">
+      <Filter>General Files\Misc Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="source\display_elements-impl.cu">
+      <Filter>General Files\Misc Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="source\device_pair_construct.cu">
+      <Filter>General Files\Device Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="source\host_pair_construct.cu">
+      <Filter>General Files\Host Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="source\host_analytic.cu">
+      <Filter>General Files\Host Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="source\device_analytic.cu">
+      <Filter>General Files\Device Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="source\general_search.cu">
+      <Filter>General Files\General Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="source\device_help.cu">
+      <Filter>General Files\Device Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="source\device_convert.cu">
+      <Filter>General Files\Device Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="source\host_convert.cu">
+      <Filter>General Files\Host Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="source\host_pair.cu">
+      <Filter>General Files\Host Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="source\device_storage_serilization.cu">
+      <Filter>General Files\Device Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="source\algorithm_clique.cu">
+      <Filter>General Files\Algorithm Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="source\algorithm_event_extraction.cu">
+      <Filter>General Files\Algorithm Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="source\algorithm_propinquity.cu">
+      <Filter>General Files\Algorithm Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="source\host_algorithm_clique.cu">
+      <Filter>General Files\Algorithm Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="source\host_algorithm_propinquity.cu">
+      <Filter>General Files\Algorithm Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="source\host_algorithm_event_extraction.cu">
+      <Filter>General Files\Algorithm Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="source\display_elements_test.cu">
+      <Filter>General Files\Misc Files</Filter>
+    </CudaCompile>
+  </ItemGroup>
+</Project>

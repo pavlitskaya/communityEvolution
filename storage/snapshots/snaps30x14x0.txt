@@ -1,0 +1,98 @@
+n_oS 38
+n 21
+
+number of snapshots: 38
+number of communities: 
+snap 1: 0, snap 2: 0, snap 3: 0, snap 4: 0, snap 5: 0, snap 6: 0, snap 7: 0, snap 8: 0, snap 9: 0, snap 10: 0, snap 11: 0, snap 12: 0, snap 13: 0, snap 14: 0, snap 15: 0, snap 16: 0, snap 17: 0, snap 18: 0, snap 19: 0, snap 20: 0, snap 21: 0, snap 22: 0, snap 23: 0, snap 24: 0, snap 25: 0, snap 26: 0, snap 27: 0, snap 28: 0, snap 29: 0, snap 30: 0, snap 31: 0, snap 32: 0, snap 33: 0, snap 34: 1, snap 35: 1, snap 36: 1, snap 37: 0, snap 38: 1
+
+sizes of communities of each snapshot: 
+snap 34: 1
+com 1: 6
+snap 35: 1
+com 1: 5
+snap 36: 1
+com 1: 5
+snap 38: 1
+com 1: 6
+
+snapshot 1
+
+snapshot 2
+
+snapshot 3
+
+snapshot 4
+
+snapshot 5
+
+snapshot 6
+
+snapshot 7
+
+snapshot 8
+
+snapshot 9
+
+snapshot 10
+
+snapshot 11
+
+snapshot 12
+
+snapshot 13
+
+snapshot 14
+
+snapshot 15
+
+snapshot 16
+
+snapshot 17
+
+snapshot 18
+
+snapshot 19
+
+snapshot 20
+
+snapshot 21
+
+snapshot 22
+
+snapshot 23
+
+snapshot 24
+
+snapshot 25
+
+snapshot 26
+
+snapshot 27
+
+snapshot 28
+
+snapshot 29
+
+snapshot 30
+
+snapshot 31
+
+snapshot 32
+
+snapshot 33
+
+snapshot 34
+8384 # 12386 # 12427 # 14382 # 14796 # 14823 # 
+
+snapshot 35
+2506 # 2713 # 3137 # 8978 # 15995 # 
+
+snapshot 36
+8978 # 10633 # 13766 # 15995 # 16362 # 
+
+snapshot 37
+
+snapshot 38
+8676 # 13766 # 15995 # 16983 # 17105 # 17259 # 
+
+

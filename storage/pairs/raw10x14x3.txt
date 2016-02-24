@@ -1,0 +1,27 @@
+# n_oS 17
+# n 64
+0 1
+0 2
+0 3
+1 2
+1 3
+2 3
+# snap 1
+2 3
+# snap 2
+2 4
+# snap 3
+# snap 4
+# snap 5
+# snap 6
+# snap 7
+# snap 8
+# snap 9
+# snap 10
+# snap 11
+# snap 12
+# snap 13
+# snap 14
+# snap 15
+# snap 16
+# snap 17
