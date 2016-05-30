@@ -1,9 +1,13 @@
 #pragma once
 
+#ifdef ARCH_WINDOWS
 #ifdef TIMINGDLL_EXPORTS
 #define TIMINGDLL_API __declspec(dllexport) 
 #else
 #define TIMINGDLL_API __declspec(dllimport) 
+#endif
+#else
+#define TIMINGDLL_API __attribute__ ((visibility ("default")))
 #endif
 
 class Timing

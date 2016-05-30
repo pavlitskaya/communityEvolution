@@ -1,9 +1,13 @@
 #pragma once
 
+#ifdef ARCH_WINDOWS
 #ifdef DISPLAYELEMENTSTESTDLL_EXPORTS
 #define DISPLAYELEMENTSTESTDLL_API __declspec(dllexport) 
 #else
 #define DISPLAYELEMENTSTESTDLL_API __declspec(dllimport) 
+#endif
+#else
+#define DISPLAYELEMENTSTESTDLL_API __attribute__ ((visibility ("default")))
 #endif
 
 using namespace std;

@@ -1,6 +1,5 @@
 #pragma once
 
-#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctime>
@@ -16,7 +15,6 @@
 #include <sstream>
 #include <fstream>
 #include <map>
-#include <windows.h>
 #include <dirent.h>
 #include <tuple>
 #include <locale>
@@ -24,3 +22,12 @@
 #include <time.h>
 #include <iterator>
 #include <numeric>
+#include <chrono>
+#include <thread>
+
+#ifdef ARCH_WINDOWS
+#include <windows.h>
+#include <stdint.h>
+#else
+#include <cstdint>
+#endif

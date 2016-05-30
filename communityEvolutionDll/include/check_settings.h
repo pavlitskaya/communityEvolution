@@ -1,9 +1,13 @@
 #pragma once
 
+#ifdef ARCH_WINDOWS
 #ifdef CHECKSETTINGSDLL_EXPORTS
 #define CHECKSETTINGSDLL_API __declspec(dllexport) 
 #else
 #define CHECKSETTINGSDLL_API __declspec(dllimport) 
+#endif
+#else
+#define CHECKSETTINGSDLL_API __attribute__ ((visibility ("default")))
 #endif
 
 namespace SpaceAny

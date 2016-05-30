@@ -1,9 +1,13 @@
 #pragma once
 
+#ifdef ARCH_WINDOWS
 #ifdef DEVICEHELPDLL_EXPORTS
 #define DEVICEHELPDLL_API __declspec(dllexport) 
 #else
 #define DEVICEHELPDLL_API __declspec(dllimport) 
+#endif
+#else
+#define DEVICEHELPDLL_API __attribute__ ((visibility ("default")))
 #endif
 
 namespace comevo{

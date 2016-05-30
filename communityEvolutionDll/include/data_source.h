@@ -1,9 +1,13 @@
 #pragma once
 
+#ifdef ARCH_WINDOWS
 #ifdef DATASOURCEDLL_EXPORTS
 #define DATASOURCDLL_API __declspec(dllexport) 
 #else
 #define DATASOURCDLL_API __declspec(dllimport) 
+#endif
+#else
+#define DATASOURCDLL_API __attribute__ ((visibility ("default")))
 #endif
 
 #include "../include/local_host_headers.h"
@@ -26,7 +30,7 @@ namespace comevo{
 		DATASOURCDLL_API Source();
 		DATASOURCDLL_API ~Source();
 
-		DATASOURCDLL_API bool Source::set_source(std::vector<pairs_t>& vecPairs, std::vector<snapshot_t>& vecSnap, FileType filetype);
+        DATASOURCDLL_API bool set_source(std::vector<pairs_t>& vecPairs, std::vector<snapshot_t>& vecSnap, FileType filetype);
 		DATASOURCDLL_API bool set_source(std::string filename, FileType filetype);
 		DATASOURCDLL_API bool set_source(std::string filename, FileType filetype, RawType formatType, std::vector<uint32_t>& parameter);
 		DATASOURCDLL_API bool convert_source();
@@ -64,8 +68,8 @@ namespace comevo{
 		DATASOURCDLL_API std::vector<pairs_t> get_edges();
 		DATASOURCDLL_API nodes_t get_nodes(uint32_t);
 		DATASOURCDLL_API pairs_t get_edges(uint32_t);
-		DATASOURCDLL_API nodes_t Source::get_nodes(uint32_t index, uint32_t from, uint32_t to);
-		DATASOURCDLL_API pairs_t Source::get_edges(uint32_t index, uint32_t from, uint32_t to);
+        DATASOURCDLL_API nodes_t get_nodes(uint32_t index, uint32_t from, uint32_t to);
+        DATASOURCDLL_API pairs_t get_edges(uint32_t index, uint32_t from, uint32_t to);
 		DATASOURCDLL_API std::vector<snapshot_t> get_snaps();
 		DATASOURCDLL_API snapshot_t get_snap(uint32_t);
 		DATASOURCDLL_API community_t get_community(uint32_t, uint32_t, uint32_t from, uint32_t to);

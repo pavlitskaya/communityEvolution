@@ -1,9 +1,13 @@
 #pragma once
 
+#ifdef ARCH_WINDOWS
 #ifdef DEVICEPAIRCONSTRUCTDLL_EXPORTS
 #define DEVICEPAIRCONSTRUCTDLL_API __declspec(dllexport) 
 #else
 #define DEVICEPAIRCONSTRUCTDLL_API __declspec(dllimport) 
+#endif
+#else
+#define DEVICEPAIRCONSTRUCTDLL_API __attribute__ ((visibility ("default")))
 #endif
 
 DEVICEPAIRCONSTRUCTDLL_API bool generate_pairs_deep(std::vector<uint32_t>& keys, std::vector<uint32_t>& values, std::vector<pair_t>& pairs);

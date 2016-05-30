@@ -1,9 +1,13 @@
 #pragma once
 
-#ifdef DEVICECONVERTDLL
+#ifdef ARCH_WINDOWS
+#ifdef DEVICECONVERTDLL_EXPORTS
 #define DEVICECONVERTDLL_API __declspec(dllexport) 
 #else
 #define DEVICECONVERTDLL_API __declspec(dllimport) 
+#endif
+#else
+#define DEVICECONVERTDLL_API __attribute__ ((visibility ("default")))
 #endif
 
 DEVICECONVERTDLL_API bool translate_snapshot_to_vector(snapshot_t& snap, T_DV<uint32_t>& d_snapVec);

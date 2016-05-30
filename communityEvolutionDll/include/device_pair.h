@@ -1,13 +1,17 @@
 #pragma once
 
+#ifdef ARCH_WINDOWS
 #ifdef DEVICEPAIRDLL_EXPORTS
 #define DEVICEPAIRDLL_API __declspec(dllexport) 
 #else
 #define DEVICEPAIRDLL_API __declspec(dllimport) 
 #endif
+#else
+#define DEVICEPAIRDLL_API __attribute__ ((visibility ("default")))
+#endif
 
 #include "general_defines.h"
-#include <thrust\device_vector.h>
+#include <thrust/device_vector.h>
 
 DEVICEPAIRDLL_API bool combine_values(T_DV<pair_t>& d_targetPairs, T_DV<uint32_t>& d_targetVal, T_DV<pair_t>& d_sourcePairs, T_DV<uint32_t>& d_sourceVal);
 

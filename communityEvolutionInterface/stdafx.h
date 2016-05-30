@@ -5,7 +5,10 @@
 
 #pragma once
 
+#ifdef ARCH_WINDOWS
 #include "targetver.h"
+#include <windows.h>
+#endif
 
 #include <cuda.h>
 #include <cuda_runtime.h>
@@ -26,7 +29,6 @@
 #include <sstream>
 #include <fstream>
 #include <map>
-#include <windows.h>
 #include <dirent.h>
 #include <tuple>
 #include <locale>

@@ -1,9 +1,13 @@
 #pragma once
 
+#ifdef ARCH_WINDOWS
 #ifdef HOSTPAIRDLL_EXPORTS
 #define HOSTPAIRDLL_API __declspec(dllexport) 
 #else
 #define HOSTPAIRDLL_API __declspec(dllimport) 
+#endif
+#else
+#define HOSTPAIRDLL_API __attribute__ ((visibility ("default")))
 #endif
 
 #include "general_defines.h"

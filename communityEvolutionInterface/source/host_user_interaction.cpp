@@ -102,7 +102,7 @@ void interact_with_user(){
 							_to.tm_mday = choice;
 
 						}
-						time_t from = max(mktime(&_from), 0);
+                        time_t from = max(mktime(&_from), (time_t)0);
 						time_t to = mktime(&_to);
 
 						user_interaction(choice, filename, 121201);

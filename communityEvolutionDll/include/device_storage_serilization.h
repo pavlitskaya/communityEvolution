@@ -1,9 +1,13 @@
 #pragma once
 
+#ifdef ARCH_WINDOWS
 #ifdef	DEVICESTORAGESERILIZATIONDLL_EXPORTS
 #define DEVICESTORAGESERILIZATIONDLL_API __declspec(dllexport) 
 #else
 #define DEVICESTORAGESERILIZATIONDLL_API __declspec(dllimport) 
+#endif
+#else
+#define DEVICESTORAGESERILIZATIONDLL_API __attribute__ ((visibility ("default")))
 #endif
 
 DEVICESTORAGESERILIZATIONDLL_API bool serialize(T_DV<pair_t>& d_pair, std::string type, uint32_t offset, uint32_t allocate, uint32_t id);

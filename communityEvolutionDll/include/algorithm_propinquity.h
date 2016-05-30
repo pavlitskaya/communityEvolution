@@ -1,9 +1,13 @@
 #pragma once
 
+#ifdef ARCH_WINDOWS
 #ifdef ALGORITHMPROPINQUITYDLL_EXPORTS
 #define ALGORITHMPROPINQUITYDLL_API __declspec(dllexport) 
 #else
 #define ALGORITHMPROPINQUITYDLL_API __declspec(dllimport) 
+#endif
+#else
+#define ALGORITHMPROPINQUITYDLL_API __attribute__ ((visibility ("default")))
 #endif
 
 #include "data_source.h"

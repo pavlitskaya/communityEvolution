@@ -1,15 +1,19 @@
 #pragma once
 
+#ifdef ARCH_WINDOWS
 #ifdef DEVICEANALYTICDLL_EXPORTS
 #define DEVICEANALYTICDLL_API __declspec(dllexport) 
 #else
 #define DEVICEANALYTICDLL_API __declspec(dllimport) 
 #endif
+#else
+#define DEVICEANALYTICDLL_API __attribute__ ((visibility ("default")))
+#endif
 
 #include "general_pair_structs.h"
 #include "general_defines.h"
 #include "data_source.h"
-#include <thrust\device_vector.h>
+#include <thrust/device_vector.h>
 
 DEVICEANALYTICDLL_API uint32_t get_number_of_diff_elements(T_DV<uint32_t>& d_source);
 DEVICEANALYTICDLL_API uint32_t get_number_of_diff_elements(T_DV<uint32_t>::iterator d_source_first, T_DV<uint32_t>::iterator d_source_last);

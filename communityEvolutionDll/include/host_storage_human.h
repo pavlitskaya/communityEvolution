@@ -2,30 +2,34 @@
 #include "../include/general_defines.h"
 #include <dirent.h>
 
+#ifdef ARCH_WINDOWS
 #ifdef HOSTSTORAGEHUMANDLL_EXPORTS
-#define HOSTSTORAGEHUMANDLL_EXPORTS __declspec(dllexport) 
+#define HOSTSTORAGEHUMANDLL_API __declspec(dllexport) 
 #else
-#define HOSTSTORAGEHUMANDLL_EXPORTS __declspec(dllimport) 
+#define HOSTSTORAGEHUMANDLL_API __declspec(dllimport) 
 #endif
-#pragma once
+#else
+#define HOSTSTORAGEHUMANDLL_API __attribute__ ((visibility ("default")))
+#endif
+
 
 namespace comevo{
 
 	/* Finds file in storage. Returns true if file exists. Sets path to the correc tpath if file was found.
 	*/
-	HOSTSTORAGEHUMANDLL_EXPORTS bool find_file(std::string filename, std::string &path);
+	HOSTSTORAGEHUMANDLL_API bool find_file(std::string filename, std::string &path);
 
 	/* Gathers all files in storage.
 	*/
-	HOSTSTORAGEHUMANDLL_EXPORTS std::vector<std::pair<dirent, std::string> > get_files(FileType folder);
+	HOSTSTORAGEHUMANDLL_API std::vector<std::pair<dirent, std::string> > get_files(FileType folder);
 
 	/* Display all files in storage.
 	*/
-	HOSTSTORAGEHUMANDLL_EXPORTS void display_files(FileType folder);
+	HOSTSTORAGEHUMANDLL_API void display_files(FileType folder);
 
 	/* Gets a specific file. Will pick the x (file_id) file in the folder. Returns false if nothing was found.
 	*/
-	HOSTSTORAGEHUMANDLL_EXPORTS bool get_file(FileType folder, uint32_t file_id, dirent& file);
+	HOSTSTORAGEHUMANDLL_API bool get_file(FileType folder, uint32_t file_id, dirent& file);
 
 	/* Reads T from a file. needs as delimiter
 	*/

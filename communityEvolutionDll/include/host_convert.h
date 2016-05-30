@@ -1,9 +1,13 @@
 #pragma once
 
-#ifdef HOSTCONVERTDLL
+#ifdef ARCH_WINDOWS
+#ifdef HOSTCONVERTDLL_EXPORTS
 #define HOSTCONVERTDLL_API __declspec(dllexport) 
 #else
 #define HOSTCONVERTDLL_API __declspec(dllimport) 
+#endif
+#else
+#define HOSTCONVERTDLL_API __attribute__ ((visibility ("default")))
 #endif
 
 namespace comevohost{

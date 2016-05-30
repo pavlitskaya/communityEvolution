@@ -1,9 +1,13 @@
 #pragma once
 
+#ifdef ARCH_WINDOWS
 #ifdef GENERALSEARCHDLL_EXPORTS
 #define GENERALSEARCHDLL_API __declspec(dllexport) 
 #else
 #define GENERALSEARCHDLL_API __declspec(dllimport) 
+#endif
+#else
+#define GENERALSEARCHDLL_API __attribute__ ((visibility ("default")))
 #endif
 
 

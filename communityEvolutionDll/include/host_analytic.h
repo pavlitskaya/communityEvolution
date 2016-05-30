@@ -1,15 +1,19 @@
 #pragma once
 
+#ifdef ARCH_WINDOWS
 #ifdef HOSTANALYTICDLL_EXPORTS
 #define HOSTANALYTICDLL_API __declspec(dllexport) 
 #else
 #define HOSTANALYTICDLL_API __declspec(dllimport) 
 #endif
+#else
+#define HOSTANALYTICDLL_API __attribute__ ((visibility ("default")))
+#endif
 
 #include "general_pair_structs.h"
 #include "general_defines.h"
 #include "data_source.h"
-#include <thrust\device_vector.h>
+#include <thrust/device_vector.h>
 
 namespace comevohost{
 

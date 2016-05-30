@@ -1,9 +1,13 @@
 #pragma once
 
+#ifdef ARCH_WINDOWS
 #ifdef HOSTALGORITHMCLIQUEDLL_EXPORTS
 #define HOSTALGORITHMCLIQUEDLL_API __declspec(dllexport) 
 #else
 #define HOSTALGORITHMCLIQUEDLL_API __declspec(dllimport) 
+#endif
+#else
+#define HOSTALGORITHMCLIQUEDLL_API __attribute__ ((visibility ("default")))
 #endif
 
 #include "data_source.h"

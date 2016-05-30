@@ -9,7 +9,7 @@ int main()
 	if (DISPLAY_MEMORY)display_device_memory();
 
 	while (true){
-		Beep(523, 500);
+        //Beep(523, 500);
 		interact_with_user();
 		system("pause");
 	}
