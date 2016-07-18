@@ -15,3 +15,4 @@ add_definitions(-D_MWAITXINTRIN_H_INCLUDED -std=c++11)
 
 add_subdirectory (communityEvolutionDll)
 add_subdirectory (communityEvolutionInterface)
+add_subdirectory (bachelorInterface)
