@@ -7,7 +7,7 @@
 #include <vector>
 #include <string>
 
-#define GPU true
+#define GPU false
 
 void createFilenames(std::vector<string> &result) {
     result.push_back(std::string("1-1-2015_pairs.json"));
@@ -431,7 +431,7 @@ int main()
 
         cout << "----------" << endl;
 
-        sourse_snaps.display();
+        source_snaps.display();
     }
 
 	return 0;
