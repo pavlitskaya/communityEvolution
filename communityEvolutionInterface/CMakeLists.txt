@@ -1,5 +1,7 @@
 cmake_minimum_required (VERSION 2.8.11)
 
+cmake_policy(SET CMP0023 OLD)
+
 file(GLOB_RECURSE INTERFACE_SRC ${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp)
 file(GLOB_RECURSE INTERFACE_HDR ${CMAKE_CURRENT_SOURCE_DIR}/header/*.h)
 
