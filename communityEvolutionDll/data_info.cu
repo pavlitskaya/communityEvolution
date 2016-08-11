@@ -14,7 +14,7 @@ void display_device_memory(){
 
 	std::locale loc("");
 	std::cout.imbue(loc);
-	std::cout << "free memory: " << dev_mem.first / 1024 << " "
-		<< "total memory: " << dev_mem.second / 1024 << std::endl;
+	std::cout << "free memory: " << (dev_mem.first / 1024) / 1024 << "MB "
+		<< "total memory: " << (dev_mem.second / 1024) / 1024 << "MB" << std::endl;
 }
 

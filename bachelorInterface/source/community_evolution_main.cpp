@@ -1,12 +1,13 @@
 #include "../stdafx.h"
 #include <data_source.h>
-
 #include <data_info.h>
 
 #include <vector>
 #include <string>
 
-#define GPU false
+#include "ResultItem.h"
+
+#define GPU true
 
 void createFilenames(std::vector<std::string> &result) {
     result.push_back(std::string("1-1-2015_pairs.json"));
@@ -395,13 +396,14 @@ int main()
         parameter.push_back(0);
         source_raw.set_source(file, RAW, EDGES, parameter);
 
-        std::cout << "Total nodes: " << source_raw.get_total_nodes() << std::endl;
-        std::cout << "Snapshot with max nodes: " << source_raw.get_max_nodes() << std::endl;
-        std::cout << "Average nodes: " << source_raw.get_avg_nodes() << std::endl;
-        std::cout << "Total edges: " << source_raw.get_total_edges() << std::endl;
-        std::cout << "Snapshot with max edges: " << source_raw.get_max_edges() << std::endl;
-        std::cout << "Average edges: " << source_raw.get_avg_edges() << std::endl;
-        std::cout << std::endl;
+	ResultItem result;
+        result.put_value("filename", file);
+        result.put_value("total_nodes", source_raw.get_total_nodes());
+        result.put_value("snapshot_with_max_nodes", source_raw.get_max_nodes());
+        result.put_value("average_nodes", source_raw.get_avg_nodes());
+        result.put_value("total_edges", source_raw.get_total_edges());
+        result.put_value("snapshot_with_max_edges", source_raw.get_max_edges());
+        result.put_value("average_edges", source_raw.get_avg_edges());
 
         uint32_t iterations = 3; // TODO: remove magic
 
@@ -422,12 +424,13 @@ int main()
             Timing::stop_time_cpu(7);
         }
 
-        std::cout << "Number of snapshots: " << source_snaps.get_m().size() << std::endl;
-        std::cout << "Total number of communities: " << source_snaps.get_total_communities() << std::endl;
-        std::cout << "Maximum number of communities: " << source_snaps.get_max_communities() << std::endl;
-        std::cout << "Average number of communities: " << source_snaps.get_avg_communities() << std::endl;
+        result.put_value("snaps_count", source_snaps.get_m().size());
+        result.put_value("communities_count", source_snaps.get_total_communities());
+        result.put_value("max_communities", source_snaps.get_max_communities());
+        result.put_value("average_communities_count", source_snaps.get_avg_communities());
 
-        std::cout << std::endl;
+        cereal::JSONOutputArchive oarchive(std::cout);
+        result.serialize(oarchive);
 
         std::cout << "----------" << std::endl;
 

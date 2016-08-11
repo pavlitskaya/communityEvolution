@@ -5,6 +5,7 @@ cmake_policy(SET CMP0023 OLD)
 file(GLOB_RECURSE BACHELOR_INTERFACE_SRC ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 file(GLOB_RECURSE BACHELOR_INTERFACE_HDR ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
 
+include_directories(${CMAKE_SOURCE_DIR}/lib/cereal)
 include_directories(${CMAKE_SOURCE_DIR}/communityEvolutionDll/include)
 
 add_definitions(
