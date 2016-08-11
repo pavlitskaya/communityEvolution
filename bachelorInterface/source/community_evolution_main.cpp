@@ -434,7 +434,7 @@ int main()
 
         std::cout << "----------" << std::endl;
 
-        source_snaps.display();
+        //source_snaps.display();
     }
 
 	return 0;
