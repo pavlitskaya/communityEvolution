@@ -1,5 +1,4 @@
 #include "../stdafx.h"
-#include "../header/host_user_interaction.h"
 #include <data_source.h>
 
 #include <data_info.h>
@@ -9,7 +8,7 @@
 
 #define GPU false
 
-void createFilenames(std::vector<string> &result) {
+void createFilenames(std::vector<std::string> &result) {
     result.push_back(std::string("1-1-2015_pairs.json"));
     result.push_back(std::string("2-1-2015_pairs.json"));
     result.push_back(std::string("3-1-2015_pairs.json"));
@@ -386,7 +385,8 @@ int main()
     createFilenames(filenames);
 
     for (auto file : filenames) {
-        cout << "=== FILENAME: " << file << " ===" << endl;
+        std::cout << "=== FILENAME: " << file << " ===" << std::endl;
+        display_device_memory();
 
         comevo::Source source_raw;
         comevo::Source source_snaps;
@@ -395,13 +395,13 @@ int main()
         parameter.push_back(0);
         source_raw.set_source(file, RAW, EDGES, parameter);
 
-        cout << "Total nodes: " << source_raw.get_total_nodes() << endl;
-        cout << "Snapshot with max nodes: " << source_raw.get_max_nodes() << endl;
-        cout << "Average nodes: " << source_raw.get_avg_nodes() << endl;
-        cout << "Total edges: " << source_raw.get_total_edges() << endl;
-        cout << "Snapshot with max edges: " << source_raw.get_max_edges() << endl;
-        cout << "Average edges: " << source_raw.get_avg_edges() << endl;
-        cout << endl;
+        std::cout << "Total nodes: " << source_raw.get_total_nodes() << std::endl;
+        std::cout << "Snapshot with max nodes: " << source_raw.get_max_nodes() << std::endl;
+        std::cout << "Average nodes: " << source_raw.get_avg_nodes() << std::endl;
+        std::cout << "Total edges: " << source_raw.get_total_edges() << std::endl;
+        std::cout << "Snapshot with max edges: " << source_raw.get_max_edges() << std::endl;
+        std::cout << "Average edges: " << source_raw.get_avg_edges() << std::endl;
+        std::cout << std::endl;
 
         uint32_t iterations = 3; // TODO: remove magic
 
@@ -422,14 +422,14 @@ int main()
             Timing::stop_time_cpu(7);
         }
 
-        cout << "Number of snapshots: " << source_snaps.get_m().size() << endl;
-        cout << "Total number of communities: " << source_snaps.get_total_communities() << endl;
-        cout << "Maximum number of communities: " << source_snaps.get_max_communities() << endl;
-        cout << "Average number of communities: " << source_snaps.get_avg_communities() << endl;
+        std::cout << "Number of snapshots: " << source_snaps.get_m().size() << std::endl;
+        std::cout << "Total number of communities: " << source_snaps.get_total_communities() << std::endl;
+        std::cout << "Maximum number of communities: " << source_snaps.get_max_communities() << std::endl;
+        std::cout << "Average number of communities: " << source_snaps.get_avg_communities() << std::endl;
 
-        cout << endl;
+        std::cout << std::endl;
 
-        cout << "----------" << endl;
+        std::cout << "----------" << std::endl;
 
         source_snaps.display();
     }
