@@ -385,6 +385,8 @@ int main()
     std::vector<std::string> filenames;
     createFilenames(filenames);
 
+    ResultItem result;
+
     for (auto file : filenames) {
         std::cout << "=== FILENAME: " << file << " ===" << std::endl;
         display_device_memory();
@@ -396,14 +398,13 @@ int main()
         parameter.push_back(0);
         source_raw.set_source(file, RAW, EDGES, parameter);
 
-	ResultItem result;
-        result.put_value("filename", file);
-        result.put_value("total_nodes", source_raw.get_total_nodes());
-        result.put_value("snapshot_with_max_nodes", source_raw.get_max_nodes());
-        result.put_value("average_nodes", source_raw.get_avg_nodes());
-        result.put_value("total_edges", source_raw.get_total_edges());
-        result.put_value("snapshot_with_max_edges", source_raw.get_max_edges());
-        result.put_value("average_edges", source_raw.get_avg_edges());
+//        ResultItem result(file);
+//        result.put_value("total_nodes", source_raw.get_total_nodes());
+//        result.put_value("snapshot_with_max_nodes", source_raw.get_max_nodes());
+//        result.put_value("average_nodes", source_raw.get_avg_nodes());
+//        result.put_value("total_edges", source_raw.get_total_edges());
+//        result.put_value("snapshot_with_max_edges", source_raw.get_max_edges());
+//        result.put_value("average_edges", source_raw.get_avg_edges());
 
         uint32_t iterations = 3; // TODO: remove magic
 
@@ -424,18 +425,25 @@ int main()
             Timing::stop_time_cpu(7);
         }
 
-        result.put_value("snaps_count", source_snaps.get_m().size());
-        result.put_value("communities_count", source_snaps.get_total_communities());
-        result.put_value("max_communities", source_snaps.get_max_communities());
-        result.put_value("average_communities_count", source_snaps.get_avg_communities());
+//        result.put_value("snaps_count", source_snaps.get_m().size());
+//        result.put_value("communities_count", source_snaps.get_total_communities());
+//        result.put_value("max_communities", source_snaps.get_max_communities());
+//        result.put_value("average_communities_count", source_snaps.get_avg_communities());
 
-        cereal::JSONOutputArchive oarchive(std::cout);
-        result.serialize(oarchive);
+        std::unordered_map<std::string, std::vector<snapshot_t>> map;
+        map.insert(std::pair<std::string, std::vector<snapshot_t>>(std::string(file), source_snaps.get_snaps()));
+        result.add_snapshots(map);
 
         std::cout << "----------" << std::endl;
 
         //source_snaps.display();
     }
+
+    std::ofstream outputFile("../output/output.json");
+    cereal::JSONOutputArchive oarchive(outputFile);
+    result.serialize(oarchive);
+    outputFile.flush();
+    outputFile.close();
 
 	return 0;
 }
