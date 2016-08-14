@@ -2,12 +2,13 @@
 #include <data_source.h>
 #include <data_info.h>
 
+#include <omp.h>
 #include <vector>
 #include <string>
 
 #include "ResultItem.h"
 
-#define GPU true
+//#define GPU true
 
 void createFilenames(std::vector<std::string> &result) {
     result.push_back(std::string("1-1-2015_pairs.json"));
@@ -382,12 +383,20 @@ int main()
     printf("\nBachelor Evolution\n\n");
 	if (DISPLAY_MEMORY)display_device_memory();
 
+
+
     std::vector<std::string> filenames;
     createFilenames(filenames);
 
     ResultItem result;
 
-    for (auto file : filenames) {
+#ifdef GPU
+    for (size_t i=0; i<filenames.size(); i++) {
+#else
+    #pragma omp parallel for shared(result)
+    for (size_t i=0; i<filenames.size(); i++) {
+#endif
+        std::string file = filenames[i];
         std::cout << "=== FILENAME: " << file << " ===" << std::endl;
         display_device_memory();
 
@@ -408,23 +417,22 @@ int main()
 
         uint32_t iterations = 3; // TODO: remove magic
 
-        if (GPU) {
+#ifdef GPU
             Timing::create_time(6);
             Timing::start_time(6);
             Timing::start_time_cpu(6);
-        Threshold threshold = Threshold(2, 3);
+            Threshold threshold = Threshold(2, 3);
             algorithm_propinquity(source_raw, source_snaps, 0, 0, threshold, 0, iterations, 0);
 
             Timing::stop_time(6);
             Timing::stop_time_cpu(6);
-        } else {
+#else
             Timing::start_time_cpu(7);
-        comevohost::Threshold host_threshold = comevohost::Threshold(2, 3);
+            comevohost::Threshold host_threshold = comevohost::Threshold(2, 3);
             comevohost::algorithm_propinquity(source_raw, source_snaps, 0, 0, host_threshold, 0, iterations, 0);
 
             Timing::stop_time_cpu(7);
-        }
-
+#endif
 //        result.put_value("snaps_count", source_snaps.get_m().size());
 //        result.put_value("communities_count", source_snaps.get_total_communities());
 //        result.put_value("max_communities", source_snaps.get_max_communities());
