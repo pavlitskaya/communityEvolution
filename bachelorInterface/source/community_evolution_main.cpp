@@ -5,10 +5,11 @@
 #include <omp.h>
 #include <vector>
 #include <string>
+#include <sstream>
 
 #include "ResultItem.h"
 
-//#define GPU true
+#define GPU true
 
 void createFilenames(std::vector<std::string> &result) {
     result.push_back(std::string("1-1-2015_pairs.json"));
@@ -42,7 +43,7 @@ void createFilenames(std::vector<std::string> &result) {
     result.push_back(std::string("29-1-2015_pairs.json"));
     result.push_back(std::string("30-1-2015_pairs.json"));
     result.push_back(std::string("31-1-2015_pairs.json"));
-    result.push_back(std::string("1-2-2015_pairs.json"));
+    /*result.push_back(std::string("1-2-2015_pairs.json"));
     result.push_back(std::string("2-2-2015_pairs.json"));
     result.push_back(std::string("3-2-2015_pairs.json"));
     result.push_back(std::string("4-2-2015_pairs.json"));
@@ -375,7 +376,7 @@ void createFilenames(std::vector<std::string> &result) {
     result.push_back(std::string("28-12-2015_pairs.json"));
     result.push_back(std::string("29-12-2015_pairs.json"));
     result.push_back(std::string("30-12-2015_pairs.json"));
-    result.push_back(std::string("31-12-2015_pairs.json"));
+    result.push_back(std::string("31-12-2015_pairs.json"));*/
 }
 
 int main()
@@ -389,6 +390,7 @@ int main()
     createFilenames(filenames);
 
     ResultItem result;
+    std::stringstream snaps_out_stream;
 
 #ifdef GPU
     for (size_t i=0; i<filenames.size(); i++) {
@@ -408,22 +410,32 @@ int main()
         parameter.push_back(0);
         source_raw.set_source(file, RAW, EDGES, parameter);
 
-//        ResultItem result(file);
-//        result.put_value("total_nodes", source_raw.get_total_nodes());
-//        result.put_value("snapshot_with_max_nodes", source_raw.get_max_nodes());
-//        result.put_value("average_nodes", source_raw.get_avg_nodes());
-//        result.put_value("total_edges", source_raw.get_total_edges());
-//        result.put_value("snapshot_with_max_edges", source_raw.get_max_edges());
-//        result.put_value("average_edges", source_raw.get_avg_edges());
-
         uint32_t iterations = 3; // TODO: remove magic
 
 #ifdef GPU
             Timing::create_time(6);
             Timing::start_time(6);
             Timing::start_time_cpu(6);
-            Threshold threshold = Threshold(2, 3);
-            algorithm_propinquity(source_raw, source_snaps, 0, 0, threshold, 0, iterations, 0);
+            Threshold threshold = Threshold(2, 3); // TODO: remove magic
+            if (algorithm_propinquity(source_raw, source_snaps, 0, 0, threshold, 0, iterations, 0)) {
+                std::cout << "Detection successful." << std::endl;
+
+                for (size_t snap_i=0; snap_i < source_snaps.get_snaps().size(); snap_i++) {
+                    snaps_out_stream << "# Snapshot " << snap_i+1 << ", " << source_snaps.get_snap(snap_i).size() << " communities" << std::endl;
+                    for (size_t comm_i=0; comm_i<source_snaps.get_snap(snap_i).size(); comm_i++) {
+                        auto snap_snaps = source_snaps.get_snap(snap_i);
+                        for (auto item : snap_snaps[comm_i]) {
+                            snaps_out_stream << item << " ";
+                        }
+                        snaps_out_stream << std::endl;
+                    }
+                }
+                snaps_out_stream << std::endl;
+
+            } else {
+                std::cerr << "Community detection returned FALSE. Stopping execution." << std::endl;
+                return 1;
+            }
 
             Timing::stop_time(6);
             Timing::stop_time_cpu(6);
@@ -434,10 +446,6 @@ int main()
 
             Timing::stop_time_cpu(7);
 #endif
-//        result.put_value("snaps_count", source_snaps.get_m().size());
-//        result.put_value("communities_count", source_snaps.get_total_communities());
-//        result.put_value("max_communities", source_snaps.get_max_communities());
-//        result.put_value("average_communities_count", source_snaps.get_avg_communities());
 
         std::unordered_map<std::string, std::vector<snapshot_t>> map;
         map.insert(std::pair<std::string, std::vector<snapshot_t>>(std::string(file), source_snaps.get_snaps()));
@@ -445,14 +453,30 @@ int main()
 
         std::cout << "----------" << std::endl;
 
-        //source_snaps.display();
     }
 
+    std::cout << "Saving JSON" << std::endl;
     std::ofstream outputFile("../output/output.json");
     cereal::JSONOutputArchive oarchive(outputFile);
     result.serialize(oarchive);
     outputFile.flush();
     outputFile.close();
+
+    std::cout << "Saving snapshots for event extraction input." << std::endl;
+    time_t t = time(0);
+    std::string snaps_filename = "bachelor_snaps-" + std::to_string(t) + ".txt";
+    std::ofstream snapsOutFile("snaps/" + snaps_filename);
+    snapsOutFile  << snaps_out_stream.rdbuf();
+    snapsOutFile.flush();
+    snapsOutFile.close();
+
+    comevo::Source loaded_snaps;
+    loaded_snaps.set_source(snaps_filename, FileType::SNAPS);
+    if (algorithm_event_extraction(loaded_snaps, 0.8, 0, true)) {
+        std::cout << "Event extraction finished." << std::endl;
+    } else {
+        std::cerr << "Event extraction failed." << std::endl;
+    }
 
 	return 0;
 }
