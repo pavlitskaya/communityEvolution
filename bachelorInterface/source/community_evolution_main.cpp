@@ -398,6 +398,7 @@ int main()
 #endif
         std::string file = filenames[i];
         std::cout << "=== FILENAME: " << file << " ===" << std::endl;
+        std::cout << "OpenMP threads: " << omp_get_thread_num() << std::endl;
         display_device_memory();
 
         comevo::Source source_raw;
