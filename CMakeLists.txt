@@ -5,6 +5,9 @@ cmake_policy(SET CMP0023 OLD)
 
 find_package(CUDA QUIET REQUIRED)
 
+
+
+
 set(CUDA_SEPARABLE_COMPILATION ON)
 set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS} -arch=sm_20 -std=c++11)
 

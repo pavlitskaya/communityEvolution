@@ -9,10 +9,10 @@
 
 #include "ResultItem.h"
 
-#define GPU true
+//#define GPU
 
 void createFilenames(std::vector<std::string> &result) {
-    result.push_back(std::string("1-1-2015_pairs.json"));
+    /*result.push_back(std::string("1-1-2015_pairs.json"));
     result.push_back(std::string("2-1-2015_pairs.json"));
     result.push_back(std::string("3-1-2015_pairs.json"));
     result.push_back(std::string("4-1-2015_pairs.json"));
@@ -43,7 +43,7 @@ void createFilenames(std::vector<std::string> &result) {
     result.push_back(std::string("29-1-2015_pairs.json"));
     result.push_back(std::string("30-1-2015_pairs.json"));
     result.push_back(std::string("31-1-2015_pairs.json"));
-    /*result.push_back(std::string("1-2-2015_pairs.json"));
+    result.push_back(std::string("1-2-2015_pairs.json"));
     result.push_back(std::string("2-2-2015_pairs.json"));
     result.push_back(std::string("3-2-2015_pairs.json"));
     result.push_back(std::string("4-2-2015_pairs.json"));
@@ -256,9 +256,9 @@ void createFilenames(std::vector<std::string> &result) {
     result.push_back(std::string("30-8-2015_pairs.json"));
     result.push_back(std::string("31-8-2015_pairs.json"));
     result.push_back(std::string("1-9-2015_pairs.json"));
-    result.push_back(std::string("2-9-2015_pairs.json"));
+    result.push_back(std::string("2-9-2015_pairs.json"));*/
     result.push_back(std::string("3-9-2015_pairs.json"));
-    result.push_back(std::string("4-9-2015_pairs.json"));
+    /*result.push_back(std::string("4-9-2015_pairs.json"));
     result.push_back(std::string("5-9-2015_pairs.json"));
     result.push_back(std::string("6-9-2015_pairs.json"));
     result.push_back(std::string("7-9-2015_pairs.json"));
