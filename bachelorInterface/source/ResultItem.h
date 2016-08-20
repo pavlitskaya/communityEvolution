@@ -29,7 +29,7 @@ class ResultItem
             this->snapshots.push_back(snapshots);
         }
 
-    private:
+    
         std::string m_filename;
         std::unordered_map<std::string, int> m_metadata;
         std::vector<std::unordered_map<std::string, std::vector<snapshot_t>>> snapshots;

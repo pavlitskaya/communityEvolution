@@ -12,7 +12,7 @@
 #define GPU true
 
 void createFilenames(std::vector<std::string> &result) {
-    result.push_back(std::string("1-1-2015_pairs.json"));
+    /*result.push_back(std::string("1-1-2015_pairs.json"));
     result.push_back(std::string("2-1-2015_pairs.json"));
     result.push_back(std::string("3-1-2015_pairs.json"));
     result.push_back(std::string("4-1-2015_pairs.json"));
@@ -43,7 +43,7 @@ void createFilenames(std::vector<std::string> &result) {
     result.push_back(std::string("29-1-2015_pairs.json"));
     result.push_back(std::string("30-1-2015_pairs.json"));
     result.push_back(std::string("31-1-2015_pairs.json"));
-    /*result.push_back(std::string("1-2-2015_pairs.json"));
+    result.push_back(std::string("1-2-2015_pairs.json"));
     result.push_back(std::string("2-2-2015_pairs.json"));
     result.push_back(std::string("3-2-2015_pairs.json"));
     result.push_back(std::string("4-2-2015_pairs.json"));
@@ -151,10 +151,10 @@ void createFilenames(std::vector<std::string> &result) {
     result.push_back(std::string("17-5-2015_pairs.json"));
     result.push_back(std::string("18-5-2015_pairs.json"));
     result.push_back(std::string("19-5-2015_pairs.json"));
-    result.push_back(std::string("20-5-2015_pairs.json"));
-    result.push_back(std::string("21-5-2015_pairs.json"));
-    result.push_back(std::string("22-5-2015_pairs.json"));
-    result.push_back(std::string("23-5-2015_pairs.json"));
+    //result.push_back(std::string("20-5-2015_pairs.json"));
+    //result.push_back(std::string("21-5-2015_pairs.json"));
+    //result.push_back(std::string("22-5-2015_pairs.json"));
+    //result.push_back(std::string("23-5-2015_pairs.json"));
     result.push_back(std::string("24-5-2015_pairs.json"));
     result.push_back(std::string("25-5-2015_pairs.json"));
     result.push_back(std::string("26-5-2015_pairs.json"));
@@ -254,16 +254,16 @@ void createFilenames(std::vector<std::string> &result) {
     result.push_back(std::string("28-8-2015_pairs.json"));
     result.push_back(std::string("29-8-2015_pairs.json"));
     result.push_back(std::string("30-8-2015_pairs.json"));
-    result.push_back(std::string("31-8-2015_pairs.json"));
+    result.push_back(std::string("31-8-2015_pairs.json"));*/
     result.push_back(std::string("1-9-2015_pairs.json"));
     result.push_back(std::string("2-9-2015_pairs.json"));
-    result.push_back(std::string("3-9-2015_pairs.json"));
+    //result.push_back(std::string("3-9-2015_pairs.json"));
     result.push_back(std::string("4-9-2015_pairs.json"));
     result.push_back(std::string("5-9-2015_pairs.json"));
     result.push_back(std::string("6-9-2015_pairs.json"));
     result.push_back(std::string("7-9-2015_pairs.json"));
     result.push_back(std::string("8-9-2015_pairs.json"));
-    result.push_back(std::string("9-9-2015_pairs.json"));
+    //result.push_back(std::string("9-9-2015_pairs.json"));
     result.push_back(std::string("10-9-2015_pairs.json"));
     result.push_back(std::string("11-9-2015_pairs.json"));
     result.push_back(std::string("12-9-2015_pairs.json"));
@@ -277,7 +277,7 @@ void createFilenames(std::vector<std::string> &result) {
     result.push_back(std::string("20-9-2015_pairs.json"));
     result.push_back(std::string("21-9-2015_pairs.json"));
     result.push_back(std::string("22-9-2015_pairs.json"));
-    result.push_back(std::string("23-9-2015_pairs.json"));
+    //result.push_back(std::string("23-9-2015_pairs.json"));
     result.push_back(std::string("24-9-2015_pairs.json"));
     result.push_back(std::string("25-9-2015_pairs.json"));
     result.push_back(std::string("26-9-2015_pairs.json"));
@@ -331,8 +331,8 @@ void createFilenames(std::vector<std::string> &result) {
     result.push_back(std::string("13-11-2015_pairs.json"));
     result.push_back(std::string("14-11-2015_pairs.json"));
     result.push_back(std::string("15-11-2015_pairs.json"));
-    result.push_back(std::string("16-11-2015_pairs.json"));
-    result.push_back(std::string("17-11-2015_pairs.json"));
+    //result.push_back(std::string("16-11-2015_pairs.json"));
+    //result.push_back(std::string("17-11-2015_pairs.json"));
     result.push_back(std::string("18-11-2015_pairs.json"));
     result.push_back(std::string("19-11-2015_pairs.json"));
     result.push_back(std::string("20-11-2015_pairs.json"));
@@ -376,7 +376,7 @@ void createFilenames(std::vector<std::string> &result) {
     result.push_back(std::string("28-12-2015_pairs.json"));
     result.push_back(std::string("29-12-2015_pairs.json"));
     result.push_back(std::string("30-12-2015_pairs.json"));
-    result.push_back(std::string("31-12-2015_pairs.json"));*/
+    result.push_back(std::string("31-12-2015_pairs.json"));
 }
 
 int main()
@@ -389,7 +389,7 @@ int main()
     std::vector<std::string> filenames;
     createFilenames(filenames);
 
-    ResultItem result;
+    ResultItem* result = new ResultItem();
     std::stringstream snaps_out_stream;
 
 #ifdef GPU
@@ -449,34 +449,64 @@ int main()
 
         std::unordered_map<std::string, std::vector<snapshot_t>> map;
         map.insert(std::pair<std::string, std::vector<snapshot_t>>(std::string(file), source_snaps.get_snaps()));
-        result.add_snapshots(map);
+        result->add_snapshots(map);
 
         std::cout << "----------" << std::endl;
 
+        std::ofstream statusOutFile("../output/status.txt");
+        statusOutFile << "Finished file " << file << std::endl;
+        statusOutFile.flush();
+        statusOutFile.close();
+
     }
 
+    std::ofstream statusOutFile("../output/status.txt");
+    statusOutFile << "Finished detection. Preparing output." << std::endl;
+    statusOutFile.flush();
+    statusOutFile.close();
+
+    time_t t = time(0);
     std::cout << "Saving JSON" << std::endl;
-    std::ofstream outputFile("../output/output.json");
-    cereal::JSONOutputArchive oarchive(outputFile);
-    result.serialize(oarchive);
+    std::ofstream outputFile("../output/output-"+std::to_string(t)+".json");
+    
+    for (auto snap : result->snapshots) {
+        outputFile << "{\"snapshot\": \"" << snap.begin()->first << "\", ";
+        outputFile << "\"communities\": [";
+        bool commComma = false;
+        for (auto comm : snap.begin()->second.at(0)) {
+            if (!commComma) { commComma = true; }
+            else { outputFile << ", "; }
+            outputFile << "[";
+            
+            bool comma = false;
+            for (auto entry : comm) {
+                if (!comma) { comma = true; }
+                else { outputFile << ", "; }
+                outputFile << entry;
+            }
+
+            outputFile << "]";
+        }
+        outputFile << "] }" << std::endl;
+    }
+    
     outputFile.flush();
     outputFile.close();
 
     std::cout << "Saving snapshots for event extraction input." << std::endl;
-    time_t t = time(0);
     std::string snaps_filename = "bachelor_snaps-" + std::to_string(t) + ".txt";
     std::ofstream snapsOutFile("snaps/" + snaps_filename);
     snapsOutFile  << snaps_out_stream.rdbuf();
     snapsOutFile.flush();
     snapsOutFile.close();
 
-    comevo::Source loaded_snaps;
+/*  comevo::Source loaded_snaps;
     loaded_snaps.set_source(snaps_filename, FileType::SNAPS);
     if (algorithm_event_extraction(loaded_snaps, 0.8, 0, true)) {
         std::cout << "Event extraction finished." << std::endl;
     } else {
         std::cerr << "Event extraction failed." << std::endl;
-    }
+    }*/
 
 	return 0;
 }
