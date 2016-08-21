@@ -643,7 +643,7 @@ namespace comevo{
 		storeTripleVector(writefile, _split, "split", 1);
         writefile << "," << std::endl;
         writefile << "    ";
-		storePairVector(writefile, _continue, "continue", "#");
+        storePairVector(writefile, _continue, "continue", "to");
         writefile << "," << std::endl;
         writefile << "    ";
 		storePairVector(writefile, _join, "join", "to");

@@ -775,6 +775,7 @@ namespace comevohost{
 
                     std::ifstream fileExistanceTest(filename);
                     while(fileExistanceTest.good()) {
+                        fileExistanceTest.close();
                         filename.append(std::string("-0"));
                         fileExistanceTest.open(filename);
                     }
