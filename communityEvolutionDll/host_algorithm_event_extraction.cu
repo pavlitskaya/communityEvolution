@@ -713,17 +713,17 @@ namespace comevohost{
 					if (display)display_vector<bool>(_disappear, "_disappear");
 				}
 
-				display_single<uint32_t>(k_curCom, "k_curCom");
-				display_single<uint32_t>(nRelevant, "nRelevant");
-				display_single<uint32_t>(k_preCom, "k_preCom");
-				cout << "_anh_ij_sum" << endl; 
-				display_vector<uint32_t>(_anh_ij_sum);
-				cout << "h_preMatrix" << endl;
-				display_vector<bool>(h_preMatrix);
-				cout << "h_curMatrix" << endl;
-				display_vector<bool>(h_curMatrix);
-				cout << "_i_f_sum" << endl;
-				display_vector<float>(_i_f_sum);
+                //display_single<uint32_t>(k_curCom, "k_curCom");
+                //display_single<uint32_t>(nRelevant, "nRelevant");
+                //display_single<uint32_t>(k_preCom, "k_preCom");
+                //cout << "_anh_ij_sum" << endl;
+                //display_vector<uint32_t>(_anh_ij_sum);
+                //cout << "h_preMatrix" << endl;
+                //display_vector<bool>(h_preMatrix);
+                //cout << "h_curMatrix" << endl;
+                //display_vector<bool>(h_curMatrix);
+                //cout << "_i_f_sum" << endl;
+                //display_vector<float>(_i_f_sum);
 
 				// join
 				if (k_curCom > 0){
@@ -742,14 +742,14 @@ namespace comevohost{
 				displayPairVector(_join, "_join", "to");
 
 				T_HV<bool> h_joinVector(nRelevant, 0);
-				cout << "h_joinVector" << endl;
-				display_vector<bool>(h_joinVector);
+                //cout << "h_joinVector" << endl;
+                //display_vector<bool>(h_joinVector);
 				thrust::transform(T_MPI(h_joinVector.begin(), T_MTI(_join.begin(), first_element())),
 					T_MPI(h_joinVector.begin(), T_MTI(_join.end(), first_element())),
 					T_MPI(h_joinVector.begin(), T_MTI(_join.begin(), first_element())),
 					set_one<bool>());
-				cout << "h_joinVector" << endl;
-				display_vector<bool>(h_joinVector);
+                //cout << "h_joinVector" << endl;
+                //display_vector<bool>(h_joinVector);
 
 				// leave
 				if (k_preCom > 0){
@@ -772,6 +772,14 @@ namespace comevohost{
 					ss << "events_";
 					ss << t;
 					string filename = ss.str();
+
+                    std::ifstream fileExistanceTest(filename);
+                    while(fileExistanceTest.good()) {
+                        filename.append(std::string("-0"));
+                        fileExistanceTest.open(filename);
+                    }
+                    fileExistanceTest.close();
+
                     std::vector<bool> dissolve(_dissolve.begin(), _dissolve.end());
                     std::vector<bool> form(_form.begin(), _form.end());
                     std::vector<tuple_triple> merge(_merge.begin(), _merge.end());
@@ -780,6 +788,8 @@ namespace comevohost{
                     std::vector<pair_ti> join(_join.begin(), _join.end());
                     std::vector<pair_ti> leve(_leve.begin(), _leve.end());
 					comevo::save_to_file(filename,
+                                         preId,
+                                         curId,
                         dissolve,
                         form,
                         merge,

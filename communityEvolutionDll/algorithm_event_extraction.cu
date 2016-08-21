@@ -746,6 +746,15 @@ bool algorithm_event_extraction(comevo::Source &source, float k, bool display, b
 				ss << "events_";
 				ss << t;
 				string filename = ss.str();
+
+                std::ifstream fileExistanceTest(filename);
+                while(fileExistanceTest.good()) {
+                    filename.append(std::string("-0"));
+                    fileExistanceTest.open(filename);
+                }
+                fileExistanceTest.close();
+
+
 				T_HV<bool> h_dissolve = _dissolve;
 				T_HV<bool> h_form = _form;
 				T_HV<tuple_triple> h_merge = _merge;
@@ -762,6 +771,8 @@ bool algorithm_event_extraction(comevo::Source &source, float k, bool display, b
                 std::vector<pair_ti> h_join_c(h_join.begin(), h_join.end());
                 std::vector<pair_ti> h_leve_c(h_leve.begin(), h_leve.end());
 				comevo::save_to_file(filename,
+                                     preId,
+                                     curId,
                      h_dissolve_c,
                      h_form_c,
                      h_merge_c,

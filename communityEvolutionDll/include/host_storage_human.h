@@ -53,6 +53,6 @@ namespace comevo{
 
 	std::vector<pair_t> create_snapshot(std::vector<uint32_t>& threads, std::vector<uint32_t>& users);
 
-	bool save_to_file(std::string filename, std::vector<bool>& _dissolve, std::vector<bool>& _form, std::vector<tuple_triple>& _merge, std::vector<tuple_triple>& _split, std::vector<pair_ti>& _continue, uint32_t _appear, uint32_t _disappear, std::vector<pair_ti>& _join, std::vector<pair_ti>& _leve);
+    bool save_to_file(std::string filename, uint32_t snap1, uint32_t snap2, std::vector<bool>& _dissolve, std::vector<bool>& _form, std::vector<tuple_triple>& _merge, std::vector<tuple_triple>& _split, std::vector<pair_ti>& _continue, uint32_t _appear, uint32_t _disappear, std::vector<pair_ti>& _join, std::vector<pair_ti>& _leve);
 
 }

@@ -547,59 +547,112 @@ namespace comevo{
 	}
 
 	void storeVector(ofstream& writefile, std::vector<bool>& vec, char* name){
-		writefile << name << ": " << endl;
+        writefile << "\"" << name << "\": [";
 		if (!vec.empty()){
-			uint32_t count = 0;
+
+            bool comma = false;
 			for (std::vector<bool>::const_iterator it = vec.begin(); it != vec.end(); ++it){
-				std::cout << *it << " ";
-				writefile << "\n";
+                if (!comma) { comma = true; }
+                else { writefile << ", "; }
+                writefile << *it;
 			}
 		}
-		writefile << "\n\n";
+        writefile << "]";
 	}
 
 	void storeTripleVector(ofstream& writefile, std::vector<tuple_triple>& vec, char* name, bool split){
-		writefile << name << ": " << endl;
+        writefile << "\"" << name << "\": ";
+
+        if (vec.size() == 0) {
+            writefile << "[]";
+            return;
+        }
+
+        writefile << "[";
+        bool comma = false;
 		for (std::vector<tuple_triple>::iterator it = vec.begin(); it != vec.end(); ++it){
+            if (!comma) { comma = true; }
+            else { writefile << ", "; }
+
 			tuple_triple trip = *it;
-			if (split)
-				writefile << thrust::get<0>(trip) << " into " << thrust::get<1>(trip) << " + " << thrust::get<2>(trip) << " # ";
-			else
-				writefile << thrust::get<0>(trip) << " + " << thrust::get<1>(trip) << " into " << thrust::get<2>(trip) << " # ";
-		}
-		writefile << "\n";
-		writefile << "\n";
+            if (split) {
+                writefile << "{\"from\": " << thrust::get<0>(trip) << ", \"into\": [" << thrust::get<1>(trip) << ", " << thrust::get<2>(trip) << "] }";
+            } else {
+                writefile << "{\"from\": [" << thrust::get<0>(trip) << ", " << thrust::get<1>(trip) << "], \"into\": " << thrust::get<2>(trip) << "} ";
+            }
+        }
+
+        writefile << "]";
 	}
 
 	void storePairVector(ofstream& writefile, std::vector<pair_ti>& vec, char* name, char* str){
-		writefile << name << ": " << endl;
+        writefile << "\"" << name << "\": ";
+
+        if (vec.size() == 0) {
+            writefile << "[]";
+            return;
+        }
+
+        writefile << "[";
+        bool comma = false;
 		for (std::vector<pair_ti>::iterator it = vec.begin(); it != vec.end(); ++it){
+            if (!comma) { comma = true; }
+            else { writefile << ", "; }
+
 			pair_ti p = *it;
-			writefile << p.first << " " << str << " " << p.second << " # ";
-		}
-		writefile << "\n";
-		writefile << "\n";
+            writefile << "{\"x\": " << p.first << ", \"" << std::string(str) << "\": " << p.second << "}";
+        }
+        writefile << "]";
 	}
 
-	bool save_to_file(std::string filename, std::vector<bool>& _dissolve, std::vector<bool>& _form, std::vector<tuple_triple>& _merge, std::vector<tuple_triple>& _split, std::vector<pair_ti>& _continue, uint32_t _appear, uint32_t _disappear, std::vector<pair_ti>& _join, std::vector<pair_ti>& _leve){
+    bool save_to_file(std::string filename, uint32_t snap1, uint32_t snap2, std::vector<bool>& _dissolve, std::vector<bool>& _form, std::vector<tuple_triple>& _merge, std::vector<tuple_triple>& _split, std::vector<pair_ti>& _continue, uint32_t _appear, uint32_t _disappear, std::vector<pair_ti>& _join, std::vector<pair_ti>& _leve){
 
 		// open file
 		ofstream writefile(filename);
 		ISOPEN(writefile, filename);
 		
-		writefile << endl;
-		writefile << endl;
-		writefile << "sizes: \n dissolve: " << thrust::count(_dissolve.begin(), _dissolve.end(), 1) << " , form: " << thrust::count(_form.begin(), _form.end(), 1) << ", merge: " << _merge.size() << ", split: " << _split.size() << ", continue: " << _continue.size() << " \n appear: " << _appear << ", disappear: " << _disappear << ", join: " << _join.size() << ", leave: " << _leve.size() << " \n\n";
+        writefile << "{"<< std::endl;
 
-		writefile << "content: \n" << endl;
+        writefile << "\"snap1\":" << snap1 << "," << std::endl;
+        writefile << "\"snap2\":" << snap2 << "," << std::endl;
+
+        writefile << "\"sizes\": " << std::endl << "    { "
+                     "\"dissolve\": " << thrust::count(_dissolve.begin(), _dissolve.end(), 1) <<
+                     ", \"form\": " << thrust::count(_form.begin(), _form.end(), 1) <<
+                     ", \"merge\": " << _merge.size() <<
+                     ", \"split\": " << _split.size() <<
+                     ", \"continue\": " << _continue.size() <<
+                     ", \"appear\": " << _appear <<
+                     ", \"disappear\": " << _disappear <<
+                     ", \"join\": " << _join.size() <<
+                     ", \"leave\": " << _leve.size()
+                  << "}, " << std::endl;
+
+        writefile << "\"events\": {" << endl;
+
+        writefile << "    ";
 		storeVector(writefile, _dissolve, "dissolve");
+        writefile << "," << std::endl;
+        writefile << "    ";
 		storeVector(writefile, _form, "form");
+        writefile << "," << std::endl;
+        writefile << "    ";
 		storeTripleVector(writefile, _merge, "merge", 0);
+        writefile << "," << std::endl;
+        writefile << "    ";
 		storeTripleVector(writefile, _split, "split", 1);
+        writefile << "," << std::endl;
+        writefile << "    ";
 		storePairVector(writefile, _continue, "continue", "#");
+        writefile << "," << std::endl;
+        writefile << "    ";
 		storePairVector(writefile, _join, "join", "to");
-		storePairVector(writefile, _leve, "leve", "from");
+        writefile << "," << std::endl;
+        writefile << "    ";
+        storePairVector(writefile, _leve, "leave", "from");
 		
+        writefile << std::endl << "    }" << std::endl;
+        writefile << "}" << std::endl;
 		writefile.close();
 		return 1;
 	}
