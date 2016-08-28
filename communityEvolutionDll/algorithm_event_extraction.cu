@@ -749,6 +749,7 @@ bool algorithm_event_extraction(comevo::Source &source, float k, bool display, b
 
                 std::ifstream fileExistanceTest(filename);
                 while(fileExistanceTest.good()) {
+                    fileExistanceTest.close();
                     filename.append(std::string("-0"));
                     fileExistanceTest.open(filename);
                 }

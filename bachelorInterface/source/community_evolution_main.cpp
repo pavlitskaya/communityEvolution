@@ -9,7 +9,7 @@
 
 #include "ResultItem.h"
 
-//#define GPU
+#define GPU
 
 void communityDetection(std::vector<std::string>& filenames) {
     if (DISPLAY_MEMORY)display_device_memory();
@@ -24,6 +24,7 @@ void communityDetection(std::vector<std::string>& filenames) {
     for (size_t i=0; i<filenames.size(); i++) {
 #endif
         std::string file = filenames[i];
+        if (file.empty()) break;
         std::cout << "=== FILENAME: " << file << " ===" << std::endl;
         std::cout << "OpenMP threads: " << omp_get_thread_num() << std::endl;
         display_device_memory();
@@ -59,7 +60,7 @@ void communityDetection(std::vector<std::string>& filenames) {
 
             } else {
                 std::cerr << "Community detection returned FALSE. Stopping execution." << std::endl;
-                return 1;
+                return;
             }
 
             Timing::stop_time(6);
@@ -94,17 +95,23 @@ void communityDetection(std::vector<std::string>& filenames) {
     std::cout << "Saving JSON" << std::endl;
     std::ofstream outputFile("../output/output-"+std::to_string(t)+".json");
 
+    std::cout << "Before loop" << std::endl;
     for (auto snap : result->snapshots) {
+        std::cout << "In loop" << std::endl;
         outputFile << "{\"snapshot\": \"" << snap.begin()->first << "\", ";
         outputFile << "\"communities\": [";
         bool commComma = false;
+        std::cout << "Before inner loop" << std::endl;
         for (auto comm : snap.begin()->second.at(0)) {
+            std::cout << "Inside inner loop" << std::endl;
             if (!commComma) { commComma = true; }
             else { outputFile << ", "; }
             outputFile << "[";
 
             bool comma = false;
+            std::cout << "Before third loop " << std::endl;
             for (auto entry : comm) {
+                std::cout << "Inside third loop" << std::endl;
                 if (!comma) { comma = true; }
                 else { outputFile << ", "; }
                 outputFile << entry;
@@ -129,7 +136,7 @@ void communityDetection(std::vector<std::string>& filenames) {
 void communityEvolution(std::string& filename) {
     comevo::Source loaded_snaps;
     loaded_snaps.set_source(filename, FileType::SNAPS);
-    if (comevohost::algorithm_event_extraction(loaded_snaps, 0.8, 0, true)) {
+    if (algorithm_event_extraction(loaded_snaps, 0.8, 0, true)) {
         std::cout << "Event extraction finished." << std::endl;
     } else {
         std::cerr << "Event extraction failed." << std::endl;
