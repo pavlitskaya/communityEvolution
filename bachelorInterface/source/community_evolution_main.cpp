@@ -136,7 +136,7 @@ void communityDetection(std::vector<std::string>& filenames) {
 void communityEvolution(std::string& filename) {
     comevo::Source loaded_snaps;
     loaded_snaps.set_source(filename, FileType::SNAPS);
-    if (algorithm_event_extraction(loaded_snaps, 0.8, 0, true)) {
+    if (algorithm_event_extraction(loaded_snaps, 0.5, 0, true)) {
         std::cout << "Event extraction finished." << std::endl;
     } else {
         std::cerr << "Event extraction failed." << std::endl;
